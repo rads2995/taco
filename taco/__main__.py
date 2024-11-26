@@ -1,4 +1,4 @@
-from taco.aco import aco
+from taco.taco import taco
 
 import numpy as np
 
@@ -15,5 +15,5 @@ dist_matrix = np.array([[0,7,6,8,3,7,5,5,7,12,4,9],
                        [4,7,4,9,11,7,6,8,8,11,0,2],
                        [9,8,3,4,11,10,7,10,9,11,2,0]], dtype=np.float64)
 
-tsp_aco: aco = aco(dist_matrix, num_ants=20, num_iter=100, alpha=1, beta=2, rho=0.5, delta_tau=10)
-print(*tsp_aco.run())
+taquito: taco = taco(dist_matrix, num_ants=50, num_iter=1000, alpha=1, beta=2, rho=0.5, delta_tau=0.5)
+print(taquito.run())

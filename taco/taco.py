@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.typing as npt
 
-class aco:
+class taco:
 
     num_cities: int     # Number of cities to visit
     num_ants: int       # Number of ants
