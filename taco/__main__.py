@@ -1,19 +1,30 @@
-from taco.taco import taco
+import argparse
+import pathlib
 
 import numpy as np
 
-dist_matrix = np.array([[0,7,6,8,3,7,5,5,7,12,4,9],
-                       [7,0,4,8,8,9,11,12,9,12,7,8],
-                       [6,4,0,4,5,9,4,10,8,4,4,3],
-                       [8,8,4,0,7,11,10,2,5,11,9,4],
-                       [3,8,5,7,0,11,7,7,11,5,11,11],
-                       [7,9,9,11,11,0,6,2,10,11,7,10],
-                       [5,11,4,10,7,6,0,2,8,6,6,7],
-                       [5,12,10,2,7,2,2,0,12,11,8,10],
-                       [7,9,8,5,11,10,8,12,0,10,8,9],
-                       [12,12,4,11,5,11,6,11,10,0,11,11],
-                       [4,7,4,9,11,7,6,8,8,11,0,2],
-                       [9,8,3,4,11,10,7,10,9,11,2,0]], dtype=np.float64)
+from taco.taco import taco
+
+parser = argparse.ArgumentParser(
+    prog='taco', 
+    description='Solves the Traveling Salesman Problem (TSP) using Ant Colony Optimization (ACO).',
+    )
+parser.add_argument('file', 
+    action='store', 
+    nargs='?', 
+    default=pathlib.Path(__file__).parent.joinpath('data','tsp_data.csv'),
+    type=pathlib.Path,
+    help='Path to CSV-file(s) containing distance matrices.')
+args = parser.parse_args()
+
+if args.file.suffix != '.csv':
+    print("Error: only paths to comma-separated values (.csv) files are supported.")
+else:
+    dist_matrix_file = np.loadtxt(args.file,
+    dtype=str,
+    delimiter=',',
+    encoding='utf-8-sig')
+    dist_matrix = dist_matrix_file[np.any(dist_matrix_file != '', axis=1)].astype(np.float64)
 
 taquito: taco = taco(dist_matrix, num_ants=50, num_iter=100, alpha=1, beta=2, rho=0.5, Q=0.5)
 print(taquito.run())
