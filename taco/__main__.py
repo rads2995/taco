@@ -14,7 +14,7 @@ parser.add_argument('file',
     nargs='?', 
     default=pathlib.Path(__file__).parent.joinpath('data','tsp_data.csv'),
     type=pathlib.Path,
-    help='Path to CSV-file(s) containing distance matrices.')
+    help='Path to comma-separated values (.csv) file containing distance matrix.')
 args = parser.parse_args()
 
 if args.file.suffix != '.csv':
