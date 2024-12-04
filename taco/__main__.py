@@ -26,5 +26,5 @@ else:
     encoding='utf-8-sig')
     dist_matrix = dist_matrix_file[np.any(dist_matrix_file != '', axis=1)].astype(np.float64)
 
-taquito: taco = taco(dist_matrix, num_ants=50, num_iter=100, alpha=1, beta=2, rho=0.5, Q=0.5)
+taquito: taco = taco(dist_matrix, num_ants=50, num_iter=1500, alpha=1, beta=2, rho=0.5, Q=0.5)
 print(taquito.run())
