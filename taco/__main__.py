@@ -3,7 +3,7 @@ import pathlib
 
 import numpy as np
 
-from taco.taco import taco
+from .taco import taco
 
 parser = argparse.ArgumentParser(
     prog='taco', 
@@ -27,4 +27,13 @@ else:
     dist_matrix = dist_matrix_file[np.any(dist_matrix_file != '', axis=1)].astype(np.float64)
 
 taquito: taco = taco(dist_matrix, num_ants=50, num_iter=1000, alpha=1, beta=2, rho=0.5, Q=0.5)
-print(taquito.run())
+
+best_path, best_distance = taquito.run()
+
+print('TSP Instance Name: {:}'.format(args.file.name))
+print('Objective: {:.6f}'.format(best_distance))
+print('Best Route:')
+print('{:d}'.format(best_path[0]), end=' ')
+for index in range(1, len(best_path) - 1):
+    print('-> {:d}'.format(best_path[index]), end=' ')
+print('-> {:d} -> {:d}'.format(best_path[-1], best_path[0]))
