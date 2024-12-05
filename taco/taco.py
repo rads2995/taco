@@ -14,9 +14,9 @@ class taco:
     tau_matrix: npt.NDArray[np.float64]         # Amount of pheromone deposited  
     eta_matrix: npt.NDArray[np.float64]         # Desirability of state transition
 
-    def __init__(self, distance_matrix: npt.NDArray[np.float64], num_ants: int = 20, 
-                       num_iter: int = 100, alpha: float = 1, beta: float = 2,
-                       rho: float = 0.5, Q: float = 1) -> None:
+    def __init__(self, distance_matrix: npt.NDArray[np.float64], num_ants: int = 50, 
+                       num_iter: int = 1000, alpha: float = 1.0, beta: float = 2.0,
+                       rho: float = 0.5, Q: float = 1.0) -> None:
 
         self.distance_matrix = distance_matrix
         self.num_cities = np.shape(distance_matrix)[0]
