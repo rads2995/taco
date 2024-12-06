@@ -20,7 +20,12 @@ This will use the default dataset that exists in the following path: `taco/data/
 
 **note:** you can run the module without installing it by performing this command, but it is important to make sure that all dependencies are satisfied, such as Numpy.
 
-If instead you would like to use a different mission, you can either provide your own `.csv` file that contains a distance matrix, or select any from the data directory. You can do this as follows:
+If prefered, one may install the required dependencies in the `requirements.txt` file with the following command:
+```shell
+python -m pip install -r requirements.txt
+```
+
+Finally, if you would like to use a different mission, you can either provide your own `.csv` file that contains a distance matrix, or select any from the data directory. You can do this as follows:
 ```shell
 python -m taco taco/data/google_or_tools.csv
 ``` 
